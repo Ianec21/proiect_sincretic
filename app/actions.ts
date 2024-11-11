@@ -30,7 +30,7 @@ export const signUpAction = async (formData: FormData) => {
     return encodedRedirect(
       "success",
       "/sign-up",
-      "Thanks for signing up! Please check your email for a verification link.",
+      "Thanks for signing up! Please check your email for a verification link."
     );
   }
 };
@@ -71,7 +71,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
     return encodedRedirect(
       "error",
       "/forgot-password",
-      "Could not reset password",
+      "Could not reset password"
     );
   }
 
@@ -82,7 +82,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
   return encodedRedirect(
     "success",
     "/forgot-password",
-    "Check your email for a link to reset your password.",
+    "Check your email for a link to reset your password."
   );
 };
 
@@ -96,7 +96,7 @@ export const resetPasswordAction = async (formData: FormData) => {
     encodedRedirect(
       "error",
       "/protected/reset-password",
-      "Password and confirm password are required",
+      "Password and confirm password are required"
     );
   }
 
@@ -104,7 +104,7 @@ export const resetPasswordAction = async (formData: FormData) => {
     encodedRedirect(
       "error",
       "/protected/reset-password",
-      "Passwords do not match",
+      "Passwords do not match"
     );
   }
 
@@ -116,7 +116,7 @@ export const resetPasswordAction = async (formData: FormData) => {
     encodedRedirect(
       "error",
       "/protected/reset-password",
-      "Password update failed",
+      "Password update failed"
     );
   }
 
@@ -127,4 +127,44 @@ export const signOutAction = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
   return redirect("/sign-in");
+};
+
+export const addEntityAction = async (entityData: any) => {
+  const supabase = await createClient();
+
+  try {
+    const { data: returnedData } = await supabase
+      .from("entitati")
+      .insert({
+        address: entityData.address,
+        type: entityData.type,
+        phoneNumber: entityData.phoneNumber,
+        email: entityData.email,
+      })
+      .select();
+
+    if (entityData.type === 0 && returnedData) {
+      console.log("TEST PERSOANA");
+      const insertedData = await supabase.from("persoane").insert({
+        id: returnedData[0].id,
+        cnp: entityData.CNP,
+        name: entityData.name,
+        birthDate: entityData.birthDate,
+      });
+
+      console.log(insertedData);
+    } else if (entityData.type === 1 && returnedData) {
+      await supabase.from("firme").insert({
+        id: returnedData[0].id,
+        cui: entityData.CUI,
+        name: entityData.name,
+        numberOfWorkers: entityData.numberOfWorkers,
+      });
+    }
+  } catch (error) {
+    console.error("Eroare la adaugarea unei entitati!");
+    throw error;
+  }
+
+  return redirect("/");
 };
