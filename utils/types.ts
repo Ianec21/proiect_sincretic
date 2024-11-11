@@ -1,4 +1,5 @@
 export interface IPerson {
+  id?: string;
   name: string;
   CNP: string;
   birthDate: Date;
@@ -8,6 +9,7 @@ export interface IPerson {
 }
 
 export interface ICompany {
+  id?: string;
   name: string;
   CUI: string;
   numberOfWorkers: number;

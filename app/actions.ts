@@ -168,3 +168,30 @@ export const addEntityAction = async (entityData: any) => {
 
   return redirect("/");
 };
+
+export const addImpozitAction = async (impozitData: any) => {
+  const supabase = await createClient();
+
+  console.log(impozitData);
+
+  try {
+    const { data: returnedData, error } = await supabase
+      .from("impozite")
+      .insert({
+        entity_id: impozitData.selectedEntityID,
+        amount: impozitData.amount,
+        payDate: impozitData.payDate,
+        taxType: impozitData.taxType,
+        status: impozitData.status,
+        paymentMethod: impozitData.paymentMethod,
+      })
+      .select();
+
+    console.log(returnedData, error);
+  } catch (error) {
+    console.error("Eroare la adaugarea unei entitati!");
+    throw error;
+  }
+
+  return redirect("/");
+};
