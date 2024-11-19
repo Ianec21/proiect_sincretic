@@ -195,3 +195,35 @@ export const addImpozitAction = async (impozitData: any) => {
 
   return redirect("/");
 };
+
+export const addUserAction = async (userData: any) => {
+  const supabase = await createClient();
+
+  try {
+    console.log(userData);
+
+    await supabase.auth
+      .signUp({
+        email: userData.email,
+        password: userData.password,
+      })
+      .then(async (response) => {
+        const { data: returnedData, error } = await supabase
+          .from("entitati")
+          .update({
+            registered: true,
+          })
+          .eq("email", userData.email);
+
+        console.log(returnedData, error);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.error("Eroare la adaugarea unei entitati!");
+    throw error;
+  }
+
+  return redirect("/");
+};

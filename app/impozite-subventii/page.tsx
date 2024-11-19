@@ -1,11 +1,9 @@
 "use client";
 
-import AddEntity from "@/components/add-entity";
 import AddImpozitRecord from "@/components/add-impozit";
 import EntitiesTable from "@/components/entities-table";
 import PaymentStatusIndicator from "@/components/payment-indicator";
 import { createClient } from "@/utils/supabase/client";
-import { ICompany, IPerson } from "@/utils/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { useCallback, useEffect, useState } from "react";
 

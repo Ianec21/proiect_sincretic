@@ -16,7 +16,6 @@ import {
   TableRow,
 } from "./ui/table";
 import { Input } from "./ui/input";
-import { Button } from "./ui/button";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
