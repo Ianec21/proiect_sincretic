@@ -38,7 +38,7 @@ export default async function EntitatiPage() {
     email: person.entitati?.email,
   }));
 
-  // join in supabase imi dadea un obiect cu un key entitate si nu as vrea, asa ca am pus totul intr-un obiect.
+  // join in supabase imi dadea un obiect cu un key entitate si nu as vrea, asa ca am pus totul intr-un obiect.s
   const destructuredCompanies = companies!.map((company) => ({
     id: company.id,
     CUI: company.cui,
