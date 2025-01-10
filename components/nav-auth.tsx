@@ -19,6 +19,9 @@ export default async function NavigationAuth() {
       <Link className="hover:border-b-2" href="/utilizatori">
         Utilizatori
       </Link>
+      <Link className="hover:border-b-2" href="/filtrari">
+        Filtrari
+      </Link>
     </div>
   ) : (
     <></>
