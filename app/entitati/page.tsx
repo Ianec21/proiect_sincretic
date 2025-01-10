@@ -1,60 +1,9 @@
 import AddEntity from "@/components/add-entity";
 import EntitiesTable from "@/components/entities-table";
 import { createClient } from "@/utils/supabase/server";
-import { ICompany, IPerson } from "@/utils/types";
-import { ColumnDef } from "@tanstack/react-table";
+import { columnsCompany, columnsPerson } from "@/utils/utils";
 
-export const columnsPerson: ColumnDef<IPerson>[] = [
-  {
-    accessorKey: "name",
-    header: "Nume",
-  },
-  {
-    accessorKey: "CNP",
-    header: "CNP",
-  },
-  {
-    accessorKey: "email",
-    header: "E-Mail",
-  },
-  {
-    accessorKey: "phoneNumber",
-    header: "Număr de telefon",
-  },
-  {
-    accessorKey: "address",
-    header: "Adresă",
-  },
-];
-
-export const columnsCompany: ColumnDef<ICompany>[] = [
-  {
-    accessorKey: "name",
-    header: "Nume",
-  },
-  {
-    accessorKey: "CUI",
-    header: "CUI",
-  },
-  {
-    accessorKey: "email",
-    header: "E-Mail",
-  },
-  {
-    accessorKey: "phoneNumber",
-    header: "Număr de telefon",
-  },
-  {
-    accessorKey: "address",
-    header: "Adresă",
-  },
-  {
-    accessorKey: "numberOfWorkers",
-    header: "Număr de lucrători",
-  },
-];
-
-export default async function Entitati() {
+export default async function EntitatiPage() {
   const supabase = await createClient();
 
   const { data: persons } = await supabase.from("persoane").select(`

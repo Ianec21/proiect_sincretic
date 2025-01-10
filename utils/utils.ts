@@ -1,4 +1,6 @@
 import { redirect } from "next/navigation";
+import { ColumnDef } from "@tanstack/react-table";
+import { ICompany, IPerson } from "./types";
 
 /**
  * Redirects to a specified path with an encoded message as a query parameter.
@@ -10,7 +12,57 @@ import { redirect } from "next/navigation";
 export function encodedRedirect(
   type: "error" | "success",
   path: string,
-  message: string,
+  message: string
 ) {
   return redirect(`${path}?${type}=${encodeURIComponent(message)}`);
 }
+
+export const columnsPerson: ColumnDef<IPerson>[] = [
+  {
+    accessorKey: "name",
+    header: "Nume",
+  },
+  {
+    accessorKey: "CNP",
+    header: "CNP",
+  },
+  {
+    accessorKey: "email",
+    header: "E-Mail",
+  },
+  {
+    accessorKey: "phoneNumber",
+    header: "Număr de telefon",
+  },
+  {
+    accessorKey: "address",
+    header: "Adresă",
+  },
+];
+
+export const columnsCompany: ColumnDef<ICompany>[] = [
+  {
+    accessorKey: "name",
+    header: "Nume",
+  },
+  {
+    accessorKey: "CUI",
+    header: "CUI",
+  },
+  {
+    accessorKey: "email",
+    header: "E-Mail",
+  },
+  {
+    accessorKey: "phoneNumber",
+    header: "Număr de telefon",
+  },
+  {
+    accessorKey: "address",
+    header: "Adresă",
+  },
+  {
+    accessorKey: "numberOfWorkers",
+    header: "Număr de lucrători",
+  },
+];

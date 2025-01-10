@@ -10,7 +10,7 @@ import { ICompany, IPerson } from "@/utils/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { useCallback, useEffect, useState } from "react";
 
-export const columnsPerson: ColumnDef<any>[] = [
+const columnsPerson: ColumnDef<any>[] = [
   {
     accessorKey: "email",
     header: "E-Mail",
@@ -26,7 +26,9 @@ export const columnsPerson: ColumnDef<any>[] = [
   {
     accessorKey: "registered",
     header: "Inregistrat",
-    cell: ({ row }) => <RegisteredIndicator status={row.original.registered} />,
+    cell: ({ row }: { row: any }) => (
+      <RegisteredIndicator status={row.original.registered} />
+    ),
   },
 ];
 

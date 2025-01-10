@@ -7,7 +7,7 @@ import { createClient } from "@/utils/supabase/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { useCallback, useEffect, useState } from "react";
 
-export const columnsTaxes: ColumnDef<any>[] = [
+const columnsTaxes: ColumnDef<any>[] = [
   {
     accessorKey: "name",
     header: "Nume",
@@ -31,7 +31,7 @@ export const columnsTaxes: ColumnDef<any>[] = [
   {
     accessorKey: "status",
     header: "Status",
-    cell: ({ row }) => (
+    cell: ({ row }: { row: any }) => (
       <PaymentStatusIndicator status={Number(row.original.status)} />
     ),
   },
