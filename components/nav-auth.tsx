@@ -16,9 +16,6 @@ export default async function NavigationAuth() {
       <Link className="hover:border-b-2" href="/impozite-subventii">
         Impozite și Subvenții
       </Link>
-      <Link className="hover:border-b-2" href="/rapoarte">
-        Rapoarte
-      </Link>
       <Link className="hover:border-b-2" href="/utilizatori">
         Utilizatori
       </Link>

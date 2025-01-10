@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <div className="flex flex-col gap-5 items-center">
+    <div className="flex flex-col gap-5 items-center mt-10">
       <h1 className="text-2xl text-center flex flex-col">
         Bine ați venit pe panoul de control al{" "}
         <span className="font-bold text-center">Primăriei Geamăna</span>

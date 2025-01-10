@@ -28,7 +28,7 @@ export default async function Statistics() {
     .eq("status", "1");
 
   return (
-    <div className="flex items-center justify-center gap-2 flex-wrap w-full">
+    <div className="flex items-center justify-center gap-2 flex-wrap w-full h-[50vh]">
       <StatisticsCard
         title="Persoane și firme"
         value={entities?.length || 0}
